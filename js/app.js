@@ -70,6 +70,21 @@ function initGame() {
 	// console.log(deck);
 }
 
+// disable opening cards after opening two cards
+function disable() {
+	allCards.forEach(function(card) {
+		card.classList.add('disable');
+		});
+}
+
+// Enable opening cards again
+function enable() {
+	allCards.forEach(function(card) {
+		card.classList.remove('disable');
+		});
+}
+
+
 initGame();
 //collect all cards in allCards
 const allCards = document.querySelectorAll('.card');
@@ -78,7 +93,7 @@ let openCards = [];
 // Adding listener to every card and open it by click
 allCards.forEach(function(card) {
 	card.addEventListener('click', function(e) {
-		if(!(card.classList.contains ('open')) && !(card.classList.contains('show')) && !(card.classList.contains('match'))){
+		if(!(card.classList.contains ('open')) && !(card.classList.contains('show')) && !(card.classList.contains('match')) && !(card.classList.contains('disable'))){
 			openCards.push(card);
 			card.classList.add('open' , 'show', 'play');
 			
@@ -108,6 +123,10 @@ allCards.forEach(function(card) {
 			// console.log('Open Cards:', openCards.length);
 			
 				if (openCards.length == 2)	 {
+					
+					//stop opening cards after opening two cards
+					disable();
+					
 
 					if(openCards[0].dataset.card == openCards[1].dataset.card) {
 						openCards[0].classList.add('match');
@@ -118,6 +137,9 @@ allCards.forEach(function(card) {
 						openCards[1].classList.remove('open');
 						openCards[1].classList.remove('show');
 						openCards = [];
+
+						//Enable opening cards aftet match occuring
+						enable();
 					}
 
 
@@ -128,7 +150,12 @@ allCards.forEach(function(card) {
 						});
 
 						openCards=[];
-					}, 200);
+						
+						//Enable opening cards after mis match 
+						enable();
+
+					}, 1000);
+
 					
 				}
 		}	
