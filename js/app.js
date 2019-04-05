@@ -17,7 +17,7 @@ function generateCard(card) {
 	return `<li class="card" data-card="${card}"><i class="fa ${card}"></i></li>`;
  }
 
-
+let moves = 0;
 
 
 /*
@@ -63,6 +63,7 @@ function initGame() {
 		
 	});
 
+	
 	// console.log(cardHTML);
 	// cardHTML.join('');
 	// console.log(cardHTML);
@@ -92,12 +93,13 @@ const allCards = document.querySelectorAll('.card');
 let openCards = [];
 // Adding listener to every card and open it by click
 allCards.forEach(function(card) {
+
 	card.addEventListener('click', function(e) {
 		if(!(card.classList.contains ('open')) && !(card.classList.contains('show')) && !(card.classList.contains('match')) && !(card.classList.contains('disable'))){
 			openCards.push(card);
 			card.classList.add('open' , 'show', 'play');
 			
-
+			
 
 
 
@@ -126,6 +128,9 @@ allCards.forEach(function(card) {
 					
 					//stop opening cards after opening two cards
 					disable();
+					moves = moves + 1;
+					let move = document.querySelector('.moves');
+					move.innerText = moves;
 					
 
 					if(openCards[0].dataset.card == openCards[1].dataset.card) {
