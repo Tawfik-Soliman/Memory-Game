@@ -18,7 +18,7 @@ function generateCard(card) {
  }
 
 let moves = 0;
-
+const rating = document.querySelector('.stars');
 
 /*
  * Display the cards on the page
@@ -128,9 +128,21 @@ allCards.forEach(function(card) {
 					
 					//stop opening cards after opening two cards
 					disable();
-					moves = moves + 1;
+					//Increment moves counter
+					moves += 1;
+					
+					// display # of moves on screen
 					let move = document.querySelector('.moves');
 					move.innerText = moves;
+					
+
+					if (moves === 11) {
+						// rating.removeChild(rating.childNodes[0]);  
+						rating.firstElementChild.remove();
+					}
+					else if (moves === 17) {
+						rating.firstElementChild.remove();
+					}
 					
 
 					if(openCards[0].dataset.card == openCards[1].dataset.card) {
