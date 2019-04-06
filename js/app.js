@@ -17,8 +17,11 @@ function generateCard(card) {
 	return `<li class="card" data-card="${card}"><i class="fa ${card}"></i></li>`;
  }
 
-let moves = 0;
 const rating = document.querySelector('.stars');
+let moves = 0;
+let min = 0;
+let sec = 0;
+
 
 /*
  * Display the cards on the page
@@ -85,6 +88,24 @@ function enable() {
 		});
 }
 
+function timer() {
+	setInterval(function(){ 
+		sec +=1;
+		let seconds = document.querySelector('.sec');
+		seconds.innerText = sec;
+		if (sec == 60) {
+			min +=1;
+			sec = 0;
+			
+			let minutes = document.querySelector('.min');
+			minutes.innerText = min;
+			}
+	 }, 1000);
+	
+	
+
+}
+
 
 initGame();
 //collect all cards in allCards
@@ -97,8 +118,14 @@ allCards.forEach(function(card) {
 	card.addEventListener('click', function(e) {
 		if(!(card.classList.contains ('open')) && !(card.classList.contains('show')) && !(card.classList.contains('match')) && !(card.classList.contains('disable'))){
 			openCards.push(card);
-			card.classList.add('open' , 'show', 'play');
 			
+			card.classList.add('open' , 'show', 'play');
+			if (openCards.length == 1) {
+				if (min ===0 && sec === 0) { 
+					timer();
+				}
+				
+			}
 			
 
 
