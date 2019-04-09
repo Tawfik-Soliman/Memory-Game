@@ -19,9 +19,11 @@ function generateCard(card) {
 
 const rating = document.querySelector('.stars');
 let moves = 0;
-let min = 0;
 let sec = 0;
-
+let min = 0;
+let clock;
+let matches = 0;
+// let timerInterval;
 
 /*
  * Display the cards on the page
@@ -88,23 +90,44 @@ function enable() {
 		});
 }
 
+// function timer() {
+		
+// 		let seconds = document.querySelector('.sec');
+// 		sec +=1;
+// 		seconds.innerText = sec;
+// 		if (sec > 4) {
+// 			min +=1;
+// 			sec = 0;
+			
+// 			let minutes = document.querySelector('.min');
+// 			minutes.innerText = min;
+// 			}
+// }
+
+
 function timer() {
-	setInterval(function(){ 
-		sec +=1;
+		clock = setInterval(function()  {
 		let seconds = document.querySelector('.sec');
+		sec ++;
 		seconds.innerText = sec;
 		if (sec == 60) {
-			min +=1;
+			min ++;
 			sec = 0;
-			
 			let minutes = document.querySelector('.min');
 			minutes.innerText = min;
-			}
-	 }, 1000);
-	
-	
-
+		}
+	},1000);
 }
+
+
+
+
+
+
+function stopTimer() {
+	clearInterval(clock);
+}
+
 
 
 initGame();
@@ -122,6 +145,7 @@ allCards.forEach(function(card) {
 			card.classList.add('open' , 'show', 'play');
 			if (openCards.length == 1) {
 				if (min ===0 && sec === 0) { 
+					// let timerInterval = setInterval(timer,1000);
 					timer();
 				}
 				
@@ -181,7 +205,10 @@ allCards.forEach(function(card) {
 						openCards[1].classList.remove('open');
 						openCards[1].classList.remove('show');
 						openCards = [];
-
+						matches ++;
+						if (matches == 8) {
+							stopTimer();
+						}
 						//Enable opening cards aftet match occuring
 						enable();
 					}
