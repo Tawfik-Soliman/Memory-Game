@@ -66,6 +66,7 @@ function initGame() {
 	const cardHTML = shuffle(cards).map(function (card) {
 		return generateCard(card);
 		
+		
 	});
 
 	
@@ -90,44 +91,27 @@ function enable() {
 		});
 }
 
-// function timer() {
-		
-// 		let seconds = document.querySelector('.sec');
-// 		sec +=1;
-// 		seconds.innerText = sec;
-// 		if (sec > 4) {
-// 			min +=1;
-// 			sec = 0;
-			
-// 			let minutes = document.querySelector('.min');
-// 			minutes.innerText = min;
-// 			}
-// }
 
-
+//  
 function timer() {
 		clock = setInterval(function()  {
 		let seconds = document.querySelector('.sec');
 		sec ++;
 		seconds.innerText = sec;
 		if (sec == 60) {
-			min ++;
 			sec = 0;
+			min ++;
 			let minutes = document.querySelector('.min');
+			seconds.innerText = sec;
 			minutes.innerText = min;
 		}
 	},1000);
 }
 
 
-
-
-
-
 function stopTimer() {
 	clearInterval(clock);
 }
-
 
 
 initGame();
@@ -189,10 +173,10 @@ allCards.forEach(function(card) {
 
 					if (moves === 11) {
 						// rating.removeChild(rating.childNodes[0]);  
-						rating.firstElementChild.remove();
+						rating.lastElementChild.remove();
 					}
 					else if (moves === 17) {
-						rating.firstElementChild.remove();
+						rating.lastElementChild.remove();
 					}
 					
 
@@ -232,3 +216,4 @@ allCards.forEach(function(card) {
 		}	
 	});
 });
+
