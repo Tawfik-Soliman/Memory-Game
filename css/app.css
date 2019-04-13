@@ -21,21 +21,21 @@ body {
 }
 
 body {
-    /*background: #ffffff url('../img/geometry2.png'); /* Background pattern from Subtle Patterns */*/
+    /*background: #ffffff url('../img/geometry2.png'); /* Background pattern from Subtle Patterns */
     font-family: 'Coda', cursive;
     
 /*Animated the background of the game*/
 background: linear-gradient(270deg, #e4d614, #ebaca2, #b2d249);
 background-size: 600% 600%;
 
--webkit-animation: AnimationName 17s ease infinite;
--moz-animation: AnimationName 17s ease infinite;
--o-animation: AnimationName 17s ease infinite;
-animation: AnimationName 17s ease infinite;
+/*-webkit-animation: AnimationName 25s ease infinite;
+-moz-animation: AnimationName 25s ease infinite;
+-o-animation: AnimationName 25s ease infinite;*/
+animation: AnimationName 25s ease infinite;
 
 }
 
-@-webkit-keyframes AnimationName {
+/*@-webkit-keyframes AnimationName {
     0%{background-position:0% 50%}
     50%{background-position:100% 50%}
     100%{background-position:0% 50%}
@@ -44,7 +44,7 @@ animation: AnimationName 17s ease infinite;
     0%{background-position:0% 50%}
     50%{background-position:100% 50%}
     100%{background-position:0% 50%}
-}
+}*/
 @keyframes AnimationName { 
     0%{background-position:0% 50%}
     50%{background-position:100% 50%}
@@ -186,7 +186,7 @@ h1 {
     width: 24rem;
     border-radius: 0.5rem;
     text-align: center;
-    font-family: brush script mt;
+    font-family: 'brush script mt';
     font-size: 1.5em;
     font-weight: bold;
     color: darkcyan;
@@ -194,7 +194,7 @@ h1 {
 
 .modal-button {
     color:darkcyan;
-    font-family: brush script mt;
+    font-family: 'brush script mt';
     font-weight: bold;
     font-size: 1.5em;
 }
@@ -252,3 +252,4 @@ h1 {
         height: 70px;
         width: 70px;
     }
+}
