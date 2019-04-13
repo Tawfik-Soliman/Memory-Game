@@ -18,11 +18,15 @@ function generateCard(card) {
  }
 
 const rating = document.querySelector('.stars');
+const restart = document.querySelector('.restart')
+let showResults = document.querySelector('.Modal-results');
+let modalRating = document.querySelector('.Modal-rating');
 let moves = 0;
 let sec = 0;
 let min = 0;
 let clock;
 let matches = 0;
+
 // let timerInterval;
 
 /*
@@ -114,6 +118,10 @@ function stopTimer() {
 }
 
 
+restart.addEventListener('click', function() {
+	location.reload();
+});
+
 initGame();
 //collect all cards in allCards
 const allCards = document.querySelectorAll('.card');
@@ -192,6 +200,8 @@ allCards.forEach(function(card) {
 						matches ++;
 						if (matches == 8) {
 							stopTimer();
+							finalScore();
+							toggleModal();
 						}
 						//Enable opening cards aftet match occuring
 						enable();
@@ -217,3 +227,25 @@ allCards.forEach(function(card) {
 	});
 });
 
+var modal = document.querySelector(".modal");
+var closeButton = document.querySelector(".close-button");
+
+function finalScore() {
+	showResults.innerHTML= ` ${moves} Moves <br>
+	in <br>${min}min ${sec}sec`;
+	modalRating.innerHTML = rating.innerHTML;
+
+}
+
+function toggleModal() {
+    modal.classList.toggle("show-modal");
+}
+
+// function windowOnClick(event) {
+//     if (event.target === modal) {
+//         toggleModal();
+//     }
+// }
+
+closeButton.addEventListener("click", toggleModal);
+// window.addEventListener("click", windowOnClick);
