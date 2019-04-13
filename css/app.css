@@ -17,7 +17,7 @@ body {
 }
 
 .header {
-    color: darkcyan;
+    color: white;
 }
 
 body {
@@ -131,7 +131,7 @@ h1 {
     text-align: left;
     width: 345px;
     margin-bottom: 10px;
-    color: darkcyan;
+    color: white;
     font-weight: bold;
     font-family: cursive;
 }
