@@ -1,8 +1,14 @@
 # Memory game
+***
+This is my second project in Udacity Front-End Nano Degree.
 
-This game is to enhance your **memory**
-
-## Instructions
+## About the Project
+***
+- Animated background written in pure CSS
+- Game can be played on all browsers (chrome is preferred)
+- Game icons are from Font Awesome
+- Game can be played on desktops, tablets and mobiles
+## How to play
 
 - Click on card
 - Timer will start
@@ -14,5 +20,3 @@ This game is to enhance your **memory**
 - If cards match repeat until all cards match
 
 Try to finish the game as **fast** as you can in minimum number of **moves**.
-
-# _ENJOY_
